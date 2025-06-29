@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import '../styles/video.css';
 
-const VideoPlayer = () => {
+interface VideoPlayerProps {
+  onVideoEnd: () => void;
+}
+
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ onVideoEnd }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [showPlayButton, setShowPlayButton] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const playVideo = async () => {
     try {
@@ -16,17 +20,17 @@ const VideoPlayer = () => {
           playPromise
             .then(() => {
               console.log('Video playback started successfully');
-              setShowPlayButton(false);
+              setIsPlaying(true);
             })
             .catch(error => {
               console.error('Error during playback:', error);
-              setShowPlayButton(true);
+              setIsPlaying(false);
             });
         }
       }
     } catch (error) {
       console.error('Error in playVideo function:', error);
-      setShowPlayButton(true);
+      setIsPlaying(false);
     }
   };
 
@@ -40,16 +44,17 @@ const VideoPlayer = () => {
       });
       video.addEventListener('playing', () => {
         console.log('Video is playing');
-        setShowPlayButton(false);
+        setIsPlaying(true);
       });
       video.addEventListener('pause', () => {
         console.log('Video paused');
-        setShowPlayButton(true);
+        setIsPlaying(false);
       });
       video.addEventListener('error', (e) => {
         console.error('Video error:', e);
-        setShowPlayButton(true);
+        setIsPlaying(false);
       });
+      video.addEventListener('ended', onVideoEnd);
     }
 
     playVideo();
@@ -61,9 +66,10 @@ const VideoPlayer = () => {
         video.removeEventListener('playing', () => {});
         video.removeEventListener('pause', () => {});
         video.removeEventListener('error', () => {});
+        video.removeEventListener('ended', onVideoEnd);
       }
     };
-  }, []);
+  }, [onVideoEnd]);
 
   const handlePlayClick = () => {
     playVideo();
@@ -85,7 +91,7 @@ const VideoPlayer = () => {
           Your browser does not support the video tag.
         </video>
         
-        {showPlayButton && (
+        {!isPlaying && (
           <button
             onClick={handlePlayClick}
             className="absolute z-50 p-6 bg-neon-blue/20 rounded-full hover:bg-neon-blue/30 border border-neon-blue transition-all duration-300 transform hover:scale-110"

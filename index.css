@@ -1,0 +1,49 @@
+@import url('https://webfonts.cgn.app/IBMPlex3270.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: theme('colors.dark-bg');
+  color: white;
+  font-family: 'IBM Plex 3270', monospace;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 4px #4485e9,
+                 0 0 11px #4485e9,
+                 0 0 19px #4485e9;
+  }
+  50% {
+    text-shadow: 0 0 4px #4485e9,
+                 0 0 8px #4485e9,
+                 0 0 13px #4485e9;
+  }
+}
+
+.neon-text {
+  color: #4485e9;
+  animation: neonPulse 2s infinite;
+}
+
+/* Add a background pattern */
+.bg-pattern {
+  background-image: 
+    linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(68, 133, 233, 0.1) 2px,
+      rgba(68, 133, 233, 0.1) 4px
+    );
+  background-size: 100% 100%, 100% 4px;
+} 

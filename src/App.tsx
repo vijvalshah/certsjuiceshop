@@ -14,6 +14,7 @@ guhan.pc2024@vitstudent.ac.in	P C GUHAN	participant`;
 function App() {
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null)
   const [showPortal, setShowPortal] = useState(false)
+  const [showVideo, setShowVideo] = useState(true)
 
   useEffect(() => {
     // Load all participants
@@ -36,39 +37,41 @@ function App() {
 
   if (!showPortal) {
     return (
-      <div className="h-screen w-screen overflow-hidden">
-        <VideoPlayer />
+      <div className="min-h-screen bg-pattern font-ibm3270">
+        {showVideo ? (
+          <VideoPlayer onVideoEnd={() => setShowVideo(false)} />
+        ) : (
+          <div className="container mx-auto px-4 py-8">
+            <div className="text-center mb-12">
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="/clogo.jpg" 
+                  alt="CYSCOM Logo" 
+                  className="h-24 w-auto rounded-lg shadow-lg shadow-neon-blue/20"
+                />
+              </div>
+              <h1 className="text-5xl font-bold neon-text mb-4 tracking-wider">
+                Cyscom Juice Shop
+              </h1>
+              <p className="text-xl text-gray-300 tracking-wide">
+                Certificate Distribution Portal
+              </p>
+            </div>
+
+            <div className="backdrop-blur-sm bg-black/30 rounded-lg shadow-2xl border border-neon-blue/20">
+              <CertificateForm
+                participants={getParticipants()}
+                onCertificateFound={handleCertificateFound}
+              />
+            </div>
+          </div>
+        )}
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-black">
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="/clogo.jpg" 
-              alt="CYSCOM Logo" 
-              className="h-24 w-auto rounded-lg shadow-lg shadow-neon-blue/20"
-            />
-          </div>
-          <h1 className="text-5xl font-bold neon-text mb-4 tracking-wider">
-            Cyscom Juice Shop
-          </h1>
-          <p className="text-xl text-gray-300 tracking-wide">
-            Certificate Distribution Portal
-          </p>
-        </div>
-
-        <div className="backdrop-blur-sm bg-black/30 rounded-lg shadow-2xl border border-neon-blue/20">
-          <CertificateForm
-            participants={getParticipants()}
-            onCertificateFound={handleCertificateFound}
-          />
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-pattern font-ibm3270">
       {selectedCertificate && (
         <CertificateDisplay certificatePath={selectedCertificate} />
       )}
