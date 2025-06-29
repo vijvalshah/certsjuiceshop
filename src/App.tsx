@@ -46,6 +46,13 @@ function App() {
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-black">
       <div className="w-full max-w-4xl mx-auto">
         <div className="text-center mb-12">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/clogo.jpg" 
+              alt="Cyscom Logo" 
+              className="h-24 w-auto rounded-lg shadow-lg shadow-neon-green/20"
+            />
+          </div>
           <h1 className="text-5xl font-bold neon-text mb-4 tracking-wider">
             Cyscom Juice Shop
           </h1>
