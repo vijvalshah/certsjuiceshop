@@ -88,17 +88,20 @@ const VideoPlayer = () => {
         {showPlayButton && (
           <button
             onClick={handlePlayClick}
-            className="absolute z-50 p-6 bg-neon-green/20 rounded-full hover:bg-neon-green/30 border border-neon-green transition-all duration-300 transform hover:scale-110"
+            className="absolute z-50 p-6 bg-neon-blue/20 rounded-full hover:bg-neon-blue/30 border border-neon-blue transition-all duration-300 transform hover:scale-110"
           >
             <svg
-              className="w-16 h-16 text-neon-green"
-              fill="currentColor"
-              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-16 h-16 text-neon-blue"
             >
               <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                clipRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z"
               />
             </svg>
           </button>

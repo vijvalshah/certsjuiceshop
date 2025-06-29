@@ -49,8 +49,8 @@ function App() {
           <div className="flex justify-center mb-6">
             <img 
               src="/clogo.jpg" 
-              alt="Cyscom Logo" 
-              className="h-24 w-auto rounded-lg shadow-lg shadow-neon-green/20"
+              alt="CYSCOM Logo" 
+              className="h-24 w-auto rounded-lg shadow-lg shadow-neon-blue/20"
             />
           </div>
           <h1 className="text-5xl font-bold neon-text mb-4 tracking-wider">
@@ -61,7 +61,7 @@ function App() {
           </p>
         </div>
 
-        <div className="backdrop-blur-sm bg-black/30 rounded-lg shadow-2xl border border-neon-green/20">
+        <div className="backdrop-blur-sm bg-black/30 rounded-lg shadow-2xl border border-neon-blue/20">
           <CertificateForm
             participants={getParticipants()}
             onCertificateFound={handleCertificateFound}

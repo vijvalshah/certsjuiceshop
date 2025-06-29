@@ -58,21 +58,21 @@ const CertificateForm: React.FC<CertificateFormProps> = ({ participants, onCerti
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 rounded bg-gray-800 border border-neon-green/30 focus:border-neon-green focus:ring-1 focus:ring-neon-green outline-none"
+            className="w-full px-4 py-2 rounded bg-gray-800 border border-neon-blue/30 focus:border-neon-blue focus:ring-1 focus:ring-neon-blue outline-none"
             placeholder="John Doe or john@example.com"
           />
         </div>
         {error && (
-          <p className="text-red-500 text-sm mt-2">{error}</p>
+          <p className="text-neon-blue text-sm mt-2">{error}</p>
         )}
         {success && (
-          <p className="text-neon-green text-sm mt-2">
+          <p className="text-neon-blue text-sm mt-2">
             Certificate found! Thank you for participating!
           </p>
         )}
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-neon-green/20 hover:bg-neon-green/30 text-neon-green rounded transition-colors duration-200 border border-neon-green/50"
+          className="w-full py-2 px-4 bg-neon-blue/20 hover:bg-neon-blue/30 text-neon-blue rounded transition-colors duration-200 border border-neon-blue/50"
         >
           Retrieve Certificate
         </button>
