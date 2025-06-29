@@ -7,6 +7,7 @@ export interface Participant {
 
 // Function to parse the raw sheet data into our format
 export function parseSheetData(rawData: string): Participant[] {
+  let counter = 1;
   return rawData
     .split('\n')
     .slice(1) // Skip header row
@@ -25,7 +26,8 @@ export function parseSheetData(rawData: string): Participant[] {
         position: position.trim(),
         isTopFive,
         certificateId,
-        driveFileId
+        driveFileId,
+        certificatePath: `/certificates/${counter++}.png`
       };
     });
 }
@@ -51,7 +53,7 @@ export const addParticipants = (tsvData: string) => {
         email: email.trim(),
         name: name.trim(),
         position: position?.trim() || 'participant',
-        certificatePath: `/CYSCOM Juice Shop Certs-20250629T115237Z-1-001/CYSCOM Juice Shop Certs/${counter}.png`
+        certificatePath: `/certificates/${counter}.png`
       });
       counter++;
     }
