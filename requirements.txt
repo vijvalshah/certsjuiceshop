@@ -1,0 +1,29 @@
+# Python Dependencies
+python>=3.9
+nodejs>=20.0.0
+
+# Development Tools
+conda-build
+pip
+
+# Note: This project primarily uses Node.js dependencies managed via package.json
+# To install Node.js dependencies, run:
+# npm install
+
+# Main Node.js dependencies (for reference):
+# - react
+# - react-dom
+# - typescript
+# - tailwindcss
+# - @types/canvas-confetti
+# - fuse.js
+# - vite
+# See package.json for complete list and versions
+
+# To set up the development environment:
+# 1. conda create -n cyscomcerts python=3.9
+# 2. conda activate cyscomcerts
+# 3. conda install nodejs
+# 4. npm install
+# 5. Copy example.env to .env and configure
+# 6. npm run dev 

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+      - VITE_GOOGLE_SHEETS_API_ENDPOINT=${VITE_GOOGLE_SHEETS_API_ENDPOINT}
+      - VITE_CERTIFICATE_BASE_URL=${VITE_CERTIFICATE_BASE_URL}
+      - VITE_GOOGLE_SHEETS_API_KEY=${VITE_GOOGLE_SHEETS_API_KEY}
+    volumes:
+      - ./public:/usr/share/nginx/html/public
+    restart: unless-stopped 
